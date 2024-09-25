@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://baofavyx3xl7e"]
+
+[ext_resource type="Script" path="res://ez_rebind/demo/demo.gd" id="1_j6lg8"]
+[ext_resource type="PackedScene" uid="uid://dn7vxodqa0mva" path="res://ez_rebind/scenes/rebind_button.tscn" id="2_ln8wg"]
+
+[node name="Demo" type="Node2D"]
+script = ExtResource("1_j6lg8")
+
+[node name="RebindButton" parent="." instance=ExtResource("2_ln8wg")]
+
+[node name="Button" parent="RebindButton" index="1"]
+text = "N"
+
+[node name="LabelDebug" parent="RebindButton" index="2"]
+visible = false
+
+[node name="RebindButton2" parent="." instance=ExtResource("2_ln8wg")]
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 122.0
+
+[node name="Button" parent="RebindButton2" index="1"]
+text = "N"
+
+[node name="LabelDebug" parent="RebindButton2" index="2"]
+visible = false
+
+[editable path="RebindButton"]
+[editable path="RebindButton2"]

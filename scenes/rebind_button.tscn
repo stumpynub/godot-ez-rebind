@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn7vxodqa0mva"]
+
+[ext_resource type="Script" path="res://ez_rebind/scripts/rebind_button.gd" id="1_fp4yl"]
+[ext_resource type="Resource" uid="uid://v2uhg3b6shoi" path="res://ez_rebind/resources/default_input_map.tres" id="2_t5bwm"]
+
+[node name="RebindButton" type="HBoxContainer"]
+theme_override_constants/separation = 5
+script = ExtResource("1_fp4yl")
+input_map = ExtResource("2_t5bwm")
+action = "Move Right"
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(171.87, 0)
+layout_mode = 2
+text = "Move Right"
+clip_text = true
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(80, 50)
+layout_mode = 2
+text = "F"
+
+[node name="LabelDebug" type="Label" parent="."]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 2
+text = "found action"
