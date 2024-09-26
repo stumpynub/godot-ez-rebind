@@ -73,7 +73,7 @@ func update_project_map():
 
 func save(update=true): 
 	
-	if resource_path != null and enable_res_save: 
+	if !resource_path.is_empty() and null and enable_res_save: 
 		ResourceSaver.save(self, resource_path)
 	
 	if enable_user_save:
