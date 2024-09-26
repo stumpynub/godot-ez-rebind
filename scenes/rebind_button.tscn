@@ -6,8 +6,8 @@
 [node name="RebindButton" type="HBoxContainer"]
 theme_override_constants/separation = 5
 script = ExtResource("1_fp4yl")
-input_map = ExtResource("2_t5bwm")
 action = "Move away"
+input_map = ExtResource("2_t5bwm")
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(171.87, 0)
@@ -18,7 +18,7 @@ clip_text = true
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
-text = "D"
+text = "Enter"
 
 [node name="LabelDebug" type="Label" parent="."]
 modulate = Color(0, 1, 0, 1)

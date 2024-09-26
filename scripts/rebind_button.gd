@@ -1,7 +1,6 @@
 @tool
 extends HBoxContainer
 
-@export var input_map: EZInputMap
 @export var action: String :
 	get: 
 		return _action
@@ -11,7 +10,8 @@ extends HBoxContainer
 		if !Engine.is_editor_hint() || !is_inside_tree(): return 
 		label.text = val
 		_update_debug()
-
+		
+@export var input_map: EZInputMap
 @export var allow_mouse_input = false
 
 
@@ -29,9 +29,16 @@ signal unlisten
 
 
 func _ready():
+	
+	if input_map == null: 
+		input_map = EZInputMap.new()
+		input_map.resource_name = "input_map"
+		input_map.update_map()
+	
 	if !Engine.is_editor_hint():
 		label_debug.hide()
-		
+	
+	
 	if !input_map: return 
 		
 	input_map.load_map()

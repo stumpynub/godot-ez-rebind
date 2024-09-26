@@ -76,6 +76,9 @@ func save(update=true):
 	if !resource_path.is_empty() and null and enable_res_save: 
 		ResourceSaver.save(self, resource_path)
 	
+	if resource_name == "": 
+		printerr("Error saving: resource name cannot be empty")
+	
 	if enable_user_save:
 		print("butts")
 		ResourceSaver.save(self, get_user_path())
