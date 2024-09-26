@@ -18,7 +18,7 @@ clip_text = true
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
-text = "D"
+text = "A"
 
 [node name="LabelDebug" type="Label" parent="."]
 modulate = Color(0, 1, 0, 1)

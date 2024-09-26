@@ -1,7 +1,7 @@
 @tool
 class_name EZInputMap extends Resource
 
-@export var _update_map : bool : 
+@export var _update_and_save : bool : 
 	set(val): 
 		update_map()
 
@@ -9,7 +9,7 @@ class_name EZInputMap extends Resource
 
 @export_group("filter settings")
 @export var prefix_ignore_list : Array[String] = []
-
+ 
 
 @export_group("save settings")
 @export_subgroup("user")
@@ -45,7 +45,7 @@ func update_map():
 		if passed_filter_check(action): 
 			
 			# copy contents of existing map or create new and fill with events
-			if map.has(action): 
+			if map.has(action) and map.get(action).size() > 0: 
 				new_map[action] = map.get(action)
 			else: 
 				new_map[action] = []
@@ -53,7 +53,8 @@ func update_map():
 					new_map.get(action).append(event)
 	
 	map = new_map
-
+	
+	save(false)
 
 func update_project_map(): 
 	InputMap.load_from_project_settings()
@@ -73,6 +74,7 @@ func save(update=true):
 		ResourceSaver.save(self, resource_path)
 	
 	if enable_user_save:
+		print("butts")
 		ResourceSaver.save(self, get_user_path())
 	
 	if update:

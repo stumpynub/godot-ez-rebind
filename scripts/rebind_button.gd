@@ -57,6 +57,7 @@ func _pressed():
 func _input(event):
 	if !listening: return 
 	if !input_map: return 
+	
 	if event.is_action_pressed("ui_cancel"): 
 		unlisten.emit()
 		return 

@@ -30,15 +30,12 @@ horizontal_alignment = 1
 
 [node name="RebindButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
 layout_mode = 2
+action = "Move Left"
 
 [node name="RebindButton2" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
 layout_mode = 2
-action = "Move Up"
+action = "Move Right"
 
 [node name="RebindButton3" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
 layout_mode = 2
-action = "Move Right"
-
-[node name="RebindButton4" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
-layout_mode = 2
-action = "Move Down"
+action = "Move Up"
