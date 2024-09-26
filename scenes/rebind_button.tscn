@@ -7,20 +7,21 @@
 theme_override_constants/separation = 5
 script = ExtResource("1_fp4yl")
 input_map = ExtResource("2_t5bwm")
-action = "Move Right"
+action = "Move Left"
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(171.87, 0)
 layout_mode = 2
-text = "Move Right"
+text = "Move Left"
 clip_text = true
 
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
-text = "F"
+text = "A"
 
 [node name="LabelDebug" type="Label" parent="."]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
+theme_override_font_sizes/font_size = 8
 text = "found action"

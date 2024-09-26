@@ -8,29 +8,34 @@ extends HBoxContainer
 	set(val): 
 		_action = val
 		
-		if !Engine.is_editor_hint(): return 
+		if !Engine.is_editor_hint() || !is_inside_tree(): return 
 		label.text = val
 		_update_debug()
 
 @export var allow_mouse_input = false
 
+
 @onready var label: Label = $Label
 @onready var label_debug: Label = $LabelDebug
 @onready var button = $Button
+
 
 var _action: String = ""
 var listening = false 
 var key_string = ""
 
+
 signal unlisten
-signal action_changed
 
 
 func _ready():
-	
 	if !Engine.is_editor_hint():
 		label_debug.hide()
 		
+	if !input_map: return 
+	
+	
+	label.text = action
 	for e in input_map.action_get_events(action): 
 		if e is InputEventKey: 
 			key_string = OS.get_keycode_string(e.physical_keycode)
@@ -38,8 +43,8 @@ func _ready():
 	
 	unlisten.connect(_unlisten)
 	button.pressed.connect(_pressed)
-	
-	input_map.update_project_inputs()
+	input_map.update_project_map()
+
 
 func _pressed(): 
 	listening = !listening
@@ -50,6 +55,7 @@ func _pressed():
 
 func _input(event):
 	if !listening: return 
+	if !input_map: return 
 	if event.is_action_pressed("ui_cancel"): 
 		unlisten.emit()
 		return 
@@ -66,7 +72,6 @@ func _input(event):
 				key_string = OS.get_keycode_string(event.physical_keycode)
 				button.text = key_string
 				input_map.save()
-				input_map.update_project_inputs()
 				
 		unlisten.emit()
 
@@ -77,7 +82,6 @@ func _unlisten():
 
 
 func _update_debug(): 
-	
 	if is_action_found(): 
 		label_debug.modulate = Color.GREEN
 		label_debug.text = "found action"
