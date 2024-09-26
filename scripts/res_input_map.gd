@@ -35,6 +35,9 @@ func load_map():
 		if ResourceLoader.exists(get_user_path()): 
 			var loaded_map : EZInputMap = ResourceLoader.load(get_user_path())
 			map = loaded_map.map
+		else: 
+			map = {}
+			update_map()
 
 
 func update_map(): 
