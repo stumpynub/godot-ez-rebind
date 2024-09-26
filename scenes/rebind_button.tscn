@@ -18,10 +18,17 @@ clip_text = true
 [node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(80, 50)
 layout_mode = 2
-text = "Enter"
+text = "F"
 
 [node name="LabelDebug" type="Label" parent="."]
 modulate = Color(0, 1, 0, 1)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "found action"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+ok_button_text = "Accept"
+dialog_text = "Existing action has the same input"
+
+[connection signal="canceled" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

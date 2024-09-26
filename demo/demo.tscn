@@ -31,11 +31,19 @@ horizontal_alignment = 1
 [node name="RebindButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
 layout_mode = 2
 action = "Move Left"
+existing_warning_popup = null
 
 [node name="RebindButton2" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
 layout_mode = 2
 action = "Move Right"
+existing_warning_popup = null
 
 [node name="RebindButton3" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
 layout_mode = 2
 action = "Move Up"
+existing_warning_popup = null
+
+[node name="RebindButton4" parent="CenterContainer/VBoxContainer" instance=ExtResource("2_ln8wg")]
+layout_mode = 2
+action = "Move Down"
+existing_warning_popup = null

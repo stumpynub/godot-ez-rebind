@@ -13,13 +13,15 @@ extends HBoxContainer
 		
 @export var input_map: EZInputMap
 @export var allow_mouse_input = false
-
+@export var existing_warning_popup = true 
 
 @onready var label: Label = $Label
 @onready var label_debug: Label = $LabelDebug
 @onready var button = $Button
+@onready var confirm_dialog = $ConfirmationDialog
 
-
+var queued_event : InputEvent
+var confirmation_queued = false
 var _action: String = ""
 var listening = false 
 var key_string = ""
@@ -76,13 +78,30 @@ func _input(event):
 	if event is InputEventKey: 
 		for e in input_map.action_get_events(action): 
 			if e is InputEventKey: 
-				input_map.action_erase_event(action, e)
-				input_map.action_add_event(action, event)
-				key_string = OS.get_keycode_string(event.physical_keycode)
-				button.text = key_string
-				input_map.save()
+				if has_existing(event): 
+					confirmation_queued = true 
+					confirm_dialog.popup_centered()
+					queued_event = event
+					return 
 				
+				comfirm_rebind(event)
 		unlisten.emit()
+
+
+func has_existing(event): 
+	for a in input_map.map:
+		if a != action: 
+			for e in input_map.map.get(a):  
+				if event.keycode == e.keycode: return true 
+
+
+func comfirm_rebind(event): 
+	input_map.map.erase(action)
+	input_map.map[action] = []
+	input_map.action_add_event(action, event)
+	key_string = OS.get_keycode_string(event.physical_keycode)
+	button.text = key_string
+	input_map.save()
 
 
 func _unlisten(): 
@@ -105,3 +124,11 @@ func is_action_found() -> bool:
 			return true 
 			
 	return false 
+
+
+func _on_confirmation_dialog_confirmed() -> void:
+	comfirm_rebind(queued_event)
+
+
+func _on_confirmation_dialog_canceled() -> void:
+	unlisten.emit()

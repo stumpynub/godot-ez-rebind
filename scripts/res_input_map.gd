@@ -43,6 +43,8 @@ func load_map():
 func update_map(): 
 	InputMap.load_from_project_settings()
 	
+	load_map()
+	
 	var new_map = {}
 	for action in InputMap.get_actions(): 
 		if passed_filter_check(action): 
@@ -80,7 +82,6 @@ func save(update=true):
 		printerr("Error saving: resource name cannot be empty")
 	
 	if enable_user_save:
-		print("butts")
 		ResourceSaver.save(self, get_user_path())
 	
 	if update:

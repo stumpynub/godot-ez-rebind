@@ -1,27 +1,6 @@
-[gd_resource type="Resource" script_class="EZInputMap" load_steps=7 format=3 uid="uid://v2uhg3b6shoi"]
+[gd_resource type="Resource" script_class="EZInputMap" load_steps=6 format=3 uid="uid://v2uhg3b6shoi"]
 
 [ext_resource type="Script" path="res://ez_rebind/scripts/res_input_map.gd" id="1_u2vce"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_bq841"]
-pressed = true
-keycode = 70
-physical_keycode = 70
-key_label = 70
-unicode = 102
-
-[sub_resource type="InputEventKey" id="InputEventKey_ikthd"]
-pressed = true
-keycode = 70
-physical_keycode = 70
-key_label = 70
-unicode = 102
-
-[sub_resource type="InputEventKey" id="InputEventKey_wir6s"]
-pressed = true
-keycode = 70
-physical_keycode = 70
-key_label = 70
-unicode = 102
 
 [sub_resource type="InputEventKey" id="InputEventKey_weceh"]
 pressed = true
@@ -30,25 +9,38 @@ physical_keycode = 70
 key_label = 70
 unicode = 102
 
-[sub_resource type="InputEventKey" id="InputEventKey_72moh"]
+[sub_resource type="InputEventKey" id="InputEventKey_nmppp"]
 pressed = true
-keycode = 70
-physical_keycode = 70
-key_label = 70
-unicode = 102
+keycode = 72
+physical_keycode = 72
+key_label = 72
+unicode = 104
+
+[sub_resource type="InputEventKey" id="InputEventKey_jyyrs"]
+pressed = true
+keycode = 72
+physical_keycode = 72
+key_label = 72
+unicode = 104
+
+[sub_resource type="InputEventKey" id="InputEventKey_s21h8"]
+pressed = true
+keycode = 72
+physical_keycode = 72
+key_label = 72
+unicode = 104
 
 [resource]
-resource_name = "default_input_path"
+resource_name = "game_input_map2"
 script = ExtResource("1_u2vce")
-_update_and_save = null
+_update_and_save = false
 map = {
 "Move Down": [SubResource("InputEventKey_weceh")],
-"Move Left": [SubResource("InputEventKey_bq841")],
-"Move Right": [SubResource("InputEventKey_ikthd")],
-"Move Up": [SubResource("InputEventKey_wir6s")],
-"Move away": [SubResource("InputEventKey_72moh")]
+"Move Left": [SubResource("InputEventKey_nmppp")],
+"Move Right": [SubResource("InputEventKey_jyyrs")],
+"Move Up": [SubResource("InputEventKey_s21h8")]
 }
 prefix_ignore_list = Array[String](["ui"])
 enable_user_save = true
-enable_res_save = false
+enable_res_save = true
 load_from_user = true
