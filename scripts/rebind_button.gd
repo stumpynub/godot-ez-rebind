@@ -33,8 +33,9 @@ func _ready():
 		label_debug.hide()
 		
 	if !input_map: return 
-	
-	
+		
+	input_map.load_map()
+		
 	label.text = action
 	for e in input_map.action_get_events(action): 
 		if e is InputEventKey: 

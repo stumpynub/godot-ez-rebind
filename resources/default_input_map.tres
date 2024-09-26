@@ -2,41 +2,45 @@
 
 [ext_resource type="Script" path="res://ez_rebind/scripts/res_input_map.gd" id="1_u2vce"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_8mwyb"]
+[sub_resource type="InputEventKey" id="InputEventKey_1jctw"]
 pressed = true
 keycode = 83
 physical_keycode = 83
 key_label = 83
-unicode = 83
+unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_l6djt"]
+[sub_resource type="InputEventKey" id="InputEventKey_2cfwv"]
 pressed = true
-keycode = 65
-physical_keycode = 65
-key_label = 65
-unicode = 65
+keycode = 83
+physical_keycode = 83
+key_label = 83
+unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_qyukr"]
+[sub_resource type="InputEventKey" id="InputEventKey_7qs2l"]
 pressed = true
-keycode = 68
-physical_keycode = 68
-key_label = 68
-unicode = 68
+keycode = 83
+physical_keycode = 83
+key_label = 83
+unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_s2yl3"]
+[sub_resource type="InputEventKey" id="InputEventKey_dcgou"]
 pressed = true
-keycode = 87
-physical_keycode = 87
-key_label = 87
-unicode = 87
+keycode = 83
+physical_keycode = 83
+key_label = 83
+unicode = 115
 
 [resource]
+resource_name = "default_input_path"
 script = ExtResource("1_u2vce")
 _update_map = null
 map = {
-"Move Down": [SubResource("InputEventKey_8mwyb")],
-"Move Left": [SubResource("InputEventKey_l6djt")],
-"Move Right": [SubResource("InputEventKey_qyukr")],
-"Move Up": [SubResource("InputEventKey_s2yl3")]
+"Move Down": [SubResource("InputEventKey_1jctw")],
+"Move Left": [SubResource("InputEventKey_2cfwv")],
+"Move Right": [SubResource("InputEventKey_7qs2l")],
+"Move Up": [SubResource("InputEventKey_dcgou")]
 }
 prefix_ignore_list = Array[String](["ui"])
+enable_user_save = true
+enable_res_save = true
+load_from_user = true

@@ -11,9 +11,30 @@ class_name EZInputMap extends Resource
 @export var prefix_ignore_list : Array[String] = []
 
 
+@export_group("save settings")
+@export_subgroup("user")
+@export var enable_user_save : bool = false 
+
+
+@export_subgroup("res")
+@export var enable_res_save : bool = true 
+
+
+@export_group("load settings")
+@export var load_from_user : bool = false 
+
+
+
 func _init() -> void:
 	if map == null: 
 		update_map()
+
+
+func load_map(): 
+	if load_from_user: 
+		if ResourceLoader.exists(get_user_path()): 
+			var loaded_map : EZInputMap = ResourceLoader.load(get_user_path())
+			map = loaded_map.map
 
 
 func update_map(): 
@@ -37,9 +58,6 @@ func update_map():
 func update_project_map(): 
 	InputMap.load_from_project_settings()
 	
-	if !prefix_ignore_list: 
-		prefix_ignore_list = []
-	
 	for action in map.keys(): 
 		if InputMap.has_action(action): 
 			InputMap.erase_action(action)
@@ -51,8 +69,11 @@ func update_project_map():
 
 func save(update=true): 
 	
-	if resource_path != null: 
+	if resource_path != null and enable_res_save: 
 		ResourceSaver.save(self, resource_path)
+	
+	if enable_user_save:
+		ResourceSaver.save(self, get_user_path())
 	
 	if update:
 		update_project_map()
@@ -79,3 +100,7 @@ func action_erase_event(action, event):
 func action_add_event(action, event): 
 	if !map.has(action): return 
 	map.get(action).append(event)
+	
+
+func get_user_path() -> String: 
+	return "user://" + resource_name + ".tres"
