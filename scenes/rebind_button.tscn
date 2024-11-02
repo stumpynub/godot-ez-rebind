@@ -1,13 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn7vxodqa0mva"]
+[gd_scene load_steps=8 format=3 uid="uid://dn7vxodqa0mva"]
 
 [ext_resource type="Script" path="res://ez_rebind/scripts/rebind_button.gd" id="1_fp4yl"]
-[ext_resource type="Resource" uid="uid://v2uhg3b6shoi" path="res://ez_rebind/resources/default_input_map.tres" id="2_t5bwm"]
+[ext_resource type="Script" path="res://ez_rebind/scripts/res_input_map.gd" id="2_wryph"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ak825"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_0ald3"]
+pressed = true
+keycode = 71
+physical_keycode = 71
+key_label = 71
+unicode = 103
+
+[sub_resource type="InputEventKey" id="InputEventKey_j2p6t"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_1n20k"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[sub_resource type="Resource" id="Resource_vw4lb"]
+resource_name = "rebinds"
+script = ExtResource("2_wryph")
+_update_and_save = false
+map = {
+"Move Down": [SubResource("InputEventKey_ak825")],
+"Move Left": [SubResource("InputEventKey_0ald3")],
+"Move Right": [SubResource("InputEventKey_j2p6t")],
+"Move Up": [SubResource("InputEventKey_1n20k")]
+}
+prefix_ignore_list = Array[String](["ui"])
+enable_user_save = true
+enable_res_save = true
+load_from_user = true
 
 [node name="RebindButton" type="HBoxContainer"]
 theme_override_constants/separation = 5
 script = ExtResource("1_fp4yl")
 action = "Move away"
-input_map = ExtResource("2_t5bwm")
+input_map = SubResource("Resource_vw4lb")
 
 [node name="Label" type="Label" parent="."]
 custom_minimum_size = Vector2(171.87, 0)

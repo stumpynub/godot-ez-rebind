@@ -9,12 +9,11 @@ class_name EZInputMap extends Resource
 
 @export_group("filter settings")
 @export var prefix_ignore_list : Array[String] = []
- 
 
+ 
 @export_group("save settings")
 @export_subgroup("user")
 @export var enable_user_save : bool = false 
-
 
 @export_subgroup("res")
 @export var enable_res_save : bool = true 
@@ -22,7 +21,6 @@ class_name EZInputMap extends Resource
 
 @export_group("load settings")
 @export var load_from_user : bool = false 
-
 
 
 func _init() -> void:
@@ -46,7 +44,7 @@ func update_map():
 	load_map()
 	
 	var new_map = {}
-	for action in InputMap.get_actions(): 
+	for action in InputMap.get_actions():
 		if passed_filter_check(action): 
 			
 			# copy contents of existing map or create new and fill with events
@@ -58,10 +56,9 @@ func update_map():
 					new_map.get(action).append(event)
 	
 	map = new_map
-	
 	save(false)
 
-func update_project_map(): 
+func update_project_actions(): 
 	InputMap.load_from_project_settings()
 	
 	for action in map.keys(): 
@@ -74,22 +71,22 @@ func update_project_map():
 
 
 func save(update=true): 
-	
 	if !resource_path.is_empty() and null and enable_res_save: 
 		ResourceSaver.save(self, resource_path)
 	
+	# don't save if resource name isn't specified 
 	if resource_name == "": 
 		printerr("Error saving: resource name cannot be empty")
 	
+	# saves resources to user path 
 	if enable_user_save:
 		ResourceSaver.save(self, get_user_path())
 	
 	if update:
-		update_project_map()
+		update_project_actions()
 
 
 func action_get_events(action) -> Array: 
-	
 	if !map.has(action): return []
 	return map.get(action)
 

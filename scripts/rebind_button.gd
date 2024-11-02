@@ -32,6 +32,8 @@ signal unlisten
 
 func _ready():
 	
+	_update_debug()
+	
 	if input_map == null: 
 		input_map = EZInputMap.new()
 		input_map.resource_name = "input_map"
@@ -44,8 +46,8 @@ func _ready():
 	if !input_map: return 
 		
 	input_map.load_map()
-		
 	label.text = action
+	
 	for e in input_map.action_get_events(action): 
 		if e is InputEventKey: 
 			key_string = OS.get_keycode_string(e.physical_keycode)
@@ -53,7 +55,7 @@ func _ready():
 	
 	unlisten.connect(_unlisten)
 	button.pressed.connect(_pressed)
-	input_map.update_project_map()
+	input_map.update_project_actions()
 
 
 func _pressed(): 
